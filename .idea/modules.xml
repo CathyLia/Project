@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/add.iml" filepath="$PROJECT_DIR$/add.iml" />
+      <module fileurl="file://$PROJECT_DIR$/add_pin.iml" filepath="$PROJECT_DIR$/add_pin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

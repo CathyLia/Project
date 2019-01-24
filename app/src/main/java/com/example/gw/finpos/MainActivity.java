@@ -34,6 +34,8 @@ import com.imagpay.enums.PrintStatus;
 import com.imagpay.mpos.MposHandler;
 import com.imagpay.Settings;
 import com.imagpay.utils.StringUtils;
+import com.sun.javacard.apduio.Apdu;
+import com.sun.javacard.jpcsclite.Card;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -172,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements SwipeListener {
     public void onConnected(SwipeEvent swipeEvent) {
         sendMessage("Connect ok...");
         String ver = settings.readVersion();
+
         ver = hexToSting(ver);
         sendMessage("Version numéro :" + ver);
 
@@ -273,6 +276,16 @@ public class MainActivity extends AppCompatActivity implements SwipeListener {
 
     }
 
+    public void pin_pin(){
+         int pn = 1234;
+        Apdu apdu = null;
+        apdu.Le= 0x00;
+        apdu.Lc= 0x00;
+
+
+    }
+
+
     //carte puce
     public void card_card(){
         if (flag) {
@@ -305,14 +318,6 @@ public class MainActivity extends AppCompatActivity implements SwipeListener {
         }).run();
     }
 
-    //PIN
-    private void CreatePIN(APDU apdu, byte[] buffer){
-        byte pin_nb = buffer[ISO7816.OFFSET_P1];
-        byte num_tries = buffer[ISO7816.OFFSET_P2];
-        final byte INS_CREATE_PIN = (byte) 0X40;
-        byte create_pin_ACL;
-
-    }
 
     private synchronized void iCCardTest() {
         if (flag) {
@@ -329,15 +334,6 @@ public class MainActivity extends AppCompatActivity implements SwipeListener {
         }).start();
     }
 
-    public String onReadPin(int arg0, int arg1) {
-        Log.i("xtztt", "onReadPin:1234");
-        return "1234";
-    }
-
-
-    public void addCard(){
-
-    }
 
     private void emv() {
         handleros.sendEmptyMessage(showReadDailog);
@@ -523,28 +519,6 @@ public class MainActivity extends AppCompatActivity implements SwipeListener {
         ea.setDDOL("039F3704");
         ea.setTDOL("0F9F02065F2A029A039C0195059F3704");
         ea.setVersion("008C");
-        ep.addApp(ea);
-    }
-
-    private void loadJCBAIDs(EMVParam ep) {
-        // JCB
-        EMVApp ea = new EMVApp();
-        ea.setAppName("");
-        ea.setAID("A0000000651010");
-        ea.setSelFlag(EMVConstants.PART_MATCH);
-        ea.setPriority((byte) 0x00);
-        ea.setTargetPer((byte) 0x00);
-        ea.setMaxTargetPer((byte) 0x00);
-        ea.setFloorLimitCheck((byte) 0x01);
-        ea.setFloorLimit(2000);
-        ea.setThreshold((byte) 0x00);
-        ea.setTACDenial("0000000000");
-        ea.setTACOnline("0000001000");
-        ea.setTACDefault("0000000000");
-        ea.setAcquierId("000000123456");
-        ea.setDDOL("039F3704");
-        ea.setTDOL("0F9F02065F2A029A039C0195059F3704");
-        ea.setVersion("0001");
         ep.addApp(ea);
     }
 

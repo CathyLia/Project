@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: __local_aars__:/home/cathy/DiskD/FinPIn/add/app/libs/apduio.jar:unspecified@jar">
+  <library name="Gradle: __local_aars__:/home/eqima/Cathy/add_pin/app/libs/apduio.jar:unspecified@jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/libs/apduio.jar!/" />
     </CLASSES>
