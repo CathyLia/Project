@@ -276,15 +276,6 @@ public class MainActivity extends AppCompatActivity implements SwipeListener {
 
     }
 
-    public void pin_pin(){
-         int pn = 1234;
-        Apdu apdu = null;
-        apdu.Le= 0x00;
-        apdu.Lc= 0x00;
-
-
-    }
-
 
     //carte puce
     public void card_card(){
